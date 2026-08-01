@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Nikita ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Poppins,sans-serif;
+overflow-x:hidden;color:#fff;
+background:linear-gradient(135deg,#ff4b8b,#ff84c1,#9d5cff,#fff0f8);
+background-size:400% 400%;animation:bg 18s infinite ease;
+}
+@keyframes bg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+canvas#stars{position:fixed;inset:0;z-index:-2}
+.overlay{position:fixed;inset:0;background:radial-gradient(circle at top,transparent,rgba(0,0,0,.35));z-index:-1}
+section{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:30px}
+.card{width:min(92vw,760px);padding:28px;border-radius:28px;background:rgba(255,255,255,.14);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.25);box-shadow:0 20px 40px rgba(0,0,0,.25)}
+h1{font-size:clamp(2.5rem,8vw,4.8rem);font-family:Dancing Script,cursive}
+h2{margin:10px 0 20px}
+p{line-height:1.8}
+.btn{display:inline-block;margin-top:20px;padding:14px 28px;border-radius:999px;background:#fff;color:#ff4b8b;text-decoration:none;font-weight:700}
+.hero{transform:translateY(-20px)}
+#counter{font-size:1.2rem;margin:18px 0;font-weight:700}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.polaroid{background:#fff;padding:10px;border-radius:8px;color:#222;transform:rotate(var(--r));box-shadow:0 12px 25px rgba(0,0,0,.3)}
+.polaroid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px}
+.polaroid div{text-align:center;padding-top:8px}
+.reasons{display:grid;gap:12px}
+.reason{padding:16px;border-radius:18px;background:rgba(255,255,255,.14)}
+.envelope{margin:20px auto;width:220px;height:150px;position:relative;cursor:pointer}
+.env{position:absolute;inset:0;background:#ffbfd9;border-radius:0 0 10px 10px}
+.flap{position:absolute;left:0;right:0;top:0;height:75px;background:#ff8aba;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:.8s}
+.letter{position:absolute;left:12px;right:12px;bottom:10px;height:110px;background:#fff;color:#333;padding:10px;border-radius:8px;transition:.8s;overflow:auto}
+.open .flap{transform:rotateX(180deg)}
+.open .letter{transform:translateY(-55px)}
+.final{font-size:2rem;text-align:center}
+.heart{position:fixed;bottom:-20px;animation:up linear forwards}
+@keyframes up{to{transform:translateY(-120vh) rotate(360deg);opacity:0}}
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.fade.show{opacity:1;transform:none}
+.small{font-size:.9rem;opacity:.9}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas><div class="overlay"></div>
+
+<section class="fade">
+<div class="card hero">
+<h1>Happy Friendship Day ❤️</h1>
+<h2>Dear Nikita 🌸</h2>
+<p>Some people walk into life quietly... and somehow become impossible to replace.</p>
+<div id="counter"></div>
+<a class="btn" href="#mem">Begin the Journey ✨</a>
+</div>
+</section>
+
+<section id="mem" class="fade">
+<div class="card">
+<h2>📸 Our Memories</h2>
+<div class="gallery">
+<div class="polaroid" style="--r:-4deg"><img src="Images/smile.jpg"><div>Smile</div></div>
+<div class="polaroid" style="--r:5deg"><img src="Images/ciaos.png"><div>Chaos 😄</div></div>
+<div class="polaroid" style="--r:-6deg"><img src="Images/memory.jpg"><div>Memory</div></div>
+<div class="polaroid" style="--r:4deg"><img src="Images/forever.png"><div>Forever</div></div>
+</div>
+</section>
+
+<section class="fade">
+<div class="card">
+<h2>🌷 Reasons You're Special</h2>
+<div class="reasons" id="reasons"></div>
+</div>
+</section>
+
+<section class="fade">
+<div class="card">
+<h2>💌 Tap the Envelope</h2>
+<div class="envelope" id="env">
+<div class="env"></div>
+<div class="flap"></div>
+<div class="letter">
+<b>Dear Nikita,</b><br><br>
+Thank you for every laugh, every random conversation, every silly moment and every memory.
+No matter where life takes us, I hope we always remain friends.
+<br><br>
+Happy Friendship Day~
+</div>
+</div>
+</div>
+</section>
+
+<section class="fade">
+<div class="card final">
+❤️Nikita❤️
+<p style="margin-top:15px">Wishing you endless happiness, success and smiles. Hoping to meet you soon my broo...</p>
+<p style="margin-top:30px">Made with Love by Sambhav for Nikita❤️</p>
+</div>
+</section>
+
+<script>
+const reasons=[
+"Your smile makes bad days better.",
+"You make conversations feel effortless.",
+"You've been there in ways you probably don't realize.",
+"You're genuinely kind.",
+"Life is more fun with you around.",
+"You deserve every happiness."
+];
+const box=document.getElementById("reasons");
+reasons.forEach((r,i)=>{
+const d=document.createElement("div");
+d.className="reason";
+d.innerHTML="💖 "+r;
+box.appendChild(d);
+});
+
+const start=new Date("2023-10-02");
+function upd(){
+let d=Math.floor((Date.now()-start)/86400000);
+document.getElementById("counter").textContent="🌸 "+d+" Days of our Great Friendship";
+}
+upd();setInterval(upd,60000);
+
+document.getElementById("env").onclick=()=>document.getElementById("env").classList.toggle("open");
+
+setInterval(()=>{
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML=Math.random()>.5?"💖":"❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(16+Math.random()*22)+"px";
+h.style.animationDuration=(4+Math.random()*5)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),9000);
+},220);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.2});
+document.querySelectorAll(".fade").forEach(x=>io.observe(x));
+
+const c=document.getElementById("stars"),ctx=c.getContext("2d");
+function rs(){c.width=innerWidth;c.height=innerHeight}rs();onresize=rs;
+const pts=[...Array(120)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+0.5,s:Math.random()*0.6+0.2}));
+(function anim(){
+ctx.clearRect(0,0,c.width,c.height);
+ctx.fillStyle="rgba(255,255,255,.8)";
+pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fill();p.y-=p.s;if(p.y<0)p.y=innerHeight;});
+requestAnimationFrame(anim);
+})();
+</script>
+
+Optional music:
+<audio autoplay loop controls style="position:fixed;right:10px;bottom:10px">
+<source src="Images/music.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
